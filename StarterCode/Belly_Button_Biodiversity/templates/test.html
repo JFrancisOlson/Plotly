@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<!--<p>Access a JSON object using dot notation:</p>
+
+<p id="demo"></p>
+<p id="demo2"></p>
+<p id="demo3"></p>
+-->
+
+<!--<p>How to loop through all properties in a JSON object.</p>
+<p id="demo4"></p>-->
+
+<p id="AGE"></p>
+<p id="BBTYPE"></p>
+<p id="ETHNICITY"></p>
+<p id="GENDER"></p>
+<p id="LOCATION"></p>
+<p id="WFREQ"></p>
+<p id="sample"></p>
+
+
+
+<script>
+
+var myObj = {"AGE":34.0,"BBTYPE":"I","ETHNICITY":"Caucasian/Midleastern","GENDER":"F","LOCATION":"Chicago/IL","WFREQ":1.0,"sample":941}
+a = myObj.AGE;
+document.getElementById("AGE").innerHTML = "AGE :      " + a;
+b = myObj.BBTYPE;
+document.getElementById("BBTYPE").innerHTML = "BBTYPE :   " + b;
+c = myObj.ETHNICITY;
+document.getElementById("ETHNICITY").innerHTML = "ETHNICITY : " + c;
+d = myObj.GENDER;
+document.getElementById("GENDER").innerHTML = "GENDER :   " + d;
+e = myObj.LOCATION;
+document.getElementById("LOCATION").innerHTML = "LOCATION : " + e;
+f = myObj.WFREQ;
+document.getElementById("WFREQ").innerHTML = "WFREQ :    " + f;
+g = myObj.sample;
+document.getElementById("sample").innerHTML = "sample :    " + g;
+
+
+for (x in myObj) {
+  console.log(x)
+  document.getElementById("demo4").innerHTML += x + "<br>";
+}
+</script>
+
+
+
+</body>
+</html>

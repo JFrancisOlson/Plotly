@@ -1,0 +1,97 @@
+function unpack(rows, index) {
+  return rows.map(function(row) {
+    return row[index];
+  });
+}
+
+
+    function getMetaData() {
+    var queryUrl =`/metadata/${sample}`;
+    d3.json(queryUrl).then(function(response) {
+        console.log(response);
+        var sample = d3.json(`/metadata/${sample}`).sample;
+        var ETHNICITY = d3.json(`/metadata/${sample}`).ETHNICITY;
+        var GENDER = d3.json(`/metadata/${sample}`).GENDER;
+        var AGE = d3.json(`/metadata/${sample}`).AGE;
+        var LOCATION = d3.json(`/metadata/${sample}`).LOCATION;
+        var BBTYPE = d3.json(`/metadata/${sample}`).BBTYPE;
+        var WFREQ = d3.json(`/metadata/${sample}`).WFREQ;
+        buildTable(sample, ETHNICITY, GENDER, AGE, LOCATION, BBTYPE, WFREQ);
+      });
+      
+
+      function buildTable(sample,ETHNICITY,GENDER,AGE,LOCATION,BBTYPE,WFREQ) {
+        // YOUR CODE HERE
+        var table = d3.select("#summary-table"); 
+        var tbody = table.select("tbody");
+        var trow;
+        for (var i = 0; i < 12; i++) {
+          trow = tbody.append("tr");
+          trow.append("td").text(sample)[i];
+          trow.append("td").text(ETHNICITY)[1];
+          trow.append("td").text(GENDER)[2];
+          trow.append("td").text(AGE)[3];
+          trow.append("td").text(LOCATION)[4];
+          trow.append("td").text(BBTYPE)[5];
+          trow.append("td").text(WFREQ)[6];
+        }
+
+      };
+      
+
+
+function insertMetaTable(basic_data, insert_id) {
+  /* Insert the key/value pairs into a table element on the DOM.
+
+  basic_data = object containing key/value pairs
+  insert_id  = the id on the DOM to insert the table into 
+
+  table_id = '#' + insert_id;
+  var array_length = Object.keys(basic_data).length;
+  var array_obj_names = Object.keys(basic_data);
+
+  // create the table header
+  $(table_id).empty();
+  $(table_id).append('<thead>');
+  $(table_id).find('thead:last').append('<th>Tag');
+  $(table_id).find('thead:last').append('<th>Data');
+
+  // begin the table body and iterate through key/value pairs
+  $(table_id).append('<tbody>');
+  for (var i = 0; i < array_length; i++) {
+    var attr_name = array_obj_names[i];
+    var tag       = '<td>' + array_obj_names[i];
+    var data      = '<td>' + basic_data[attr_name];
+
+    $(table_id).find('tbody:last').append('<tr>' + tag + data);
+  }
+}
+
+
+
+
+https://www.quandl.com/api/v3/datasets/WIKI/AMZN.json?start_date=2016-10-01&end_date=2017-10-01&collapse=monthly&api_key=DfJwWXNv1jQBmsfnFs98
+
+
+// var myObj = d3.json(url);
+    // for (x in myObj) {
+    //   document.getElementById(".summary").innerHTML += x + "<br>";
+    // }
+    // Object.entries(response).forEach(function([key, value]) {
+    //   d3.select(".summary")
+    //     .append("li")
+    //     .text(`${key}: ${value}`);
+          
+    //     console.log(`${key}: ${value}`);
+
+    //     });
+
+    // Use `.html("") to clear any existing metadata
+    // Use `Object.entries` to add each key and value pair to the panel
+    // Hint: Inside the loop, you will need to use d3 to append new
+    // tags for each key-value in the metadata.
+
+
+ // console.log(Object.keys(response).forEach(key => console.log(key)));
+
+    // Object.entries(response).forEach(([key, value]) => console.log(`${key}: ${value}`));
